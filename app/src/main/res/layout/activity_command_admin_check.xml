@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hacer Pedido"
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Campos de entrada -->
+    <EditText
+        android:id="@+id/editTextNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre"
+        android:layout_below="@id/textView"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextApellido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Apellido"
+        android:layout_below="@id/editTextNombre"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dirección"
+        android:layout_below="@id/editTextApellido"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Teléfono"
+        android:inputType="phone"
+        android:layout_below="@id/editTextDireccion"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextCiudad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ciudad"
+        android:layout_below="@id/editTextTelefono"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextCedula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cédula"
+        android:inputType="number"
+        android:layout_below="@id/editTextCiudad"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Botón Hacer Pedido -->
+    <Button
+        android:id="@+id/btnHacerPedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hacer Pedido"
+        android:layout_below="@id/editTextCedula"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"/>
+
+</RelativeLayout>
+

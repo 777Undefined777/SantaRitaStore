@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/card_activity"
+            android:icon="@drawable/cart"
+            android:title="carrito"
+
+
+
+
+            />
+        <item
+            android:id="@+id/show_product"
+            android:icon="@drawable/category"
+            android:title="Productos"
+
+
+
+
+            />
+        <item
+            android:id="@+id/settingsActivity"
+            android:icon="@drawable/settings_24dp"
+            android:title="Configuracion"
+
+
+
+
+            />
+        <item
+            android:id="@+id/sessionUserClose"
+            android:icon="@drawable/settings_24dp"
+            android:title="Cerrar Sesion"
+
+
+
+
+            />
+
+
+
+    </group>
+</menu>
