@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AdminHomeActivity extends AppCompatActivity {
 
-    private Button btn_logout, btn_viewCommand , btn_add_category;
+    private Button btn_logout, btn_viewCommand , btn_add_category, btn_del;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public class AdminHomeActivity extends AppCompatActivity {
         btn_logout = findViewById(R.id.btn_logout_admin);
         btn_viewCommand = findViewById(R.id.btn_command);
         btn_add_category = findViewById(R.id.btn_add_product);
+        btn_del = findViewById(R.id.btn_delete_products_admin);
 
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +36,15 @@ public class AdminHomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Agregar aquí la lógica para ver los comandos
                 Intent intent = new Intent(AdminHomeActivity.this, CommandViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_del.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Agregar aquí la lógica para ver los comandos
+                Intent intent = new Intent(AdminHomeActivity.this, DeleteProduct.class);
                 startActivity(intent);
             }
         });

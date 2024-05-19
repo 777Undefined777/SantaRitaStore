@@ -34,7 +34,7 @@
             />
         <item
             android:id="@+id/sessionUserClose"
-            android:icon="@drawable/settings_24dp"
+            android:icon="@drawable/logout"
             android:title="Cerrar Sesion"
 
 
