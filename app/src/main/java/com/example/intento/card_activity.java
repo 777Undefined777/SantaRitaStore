@@ -1,6 +1,8 @@
 package com.example.intento;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -15,8 +17,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.intento.model.Card;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +60,7 @@ public class card_activity extends Fragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Lógica para manejar el botón "Siguiente"
+                saveDataToSharedPreferences();
                 Intent intent = new Intent(getActivity(), CommandAdminCheck.class);
                 startActivity(intent);
             }
@@ -96,7 +100,6 @@ public class card_activity extends Fragment {
         String query = "SELECT * FROM cards WHERE user_id = ?";
         Cursor cursor = mDatabase.rawQuery(query, new String[]{String.valueOf(usuarioId)});
 
-
         if (cursor.moveToFirst()) {
             do {
                 // Obtener datos de cada producto
@@ -127,5 +130,32 @@ public class card_activity extends Fragment {
 
         // Notificar al adaptador que los datos han cambiado
         cardAdapter.notifyDataSetChanged();
+    }
+
+    private void saveDataToSharedPreferences() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("CardData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        // Guardar el total del precio
+        editor.putFloat("totalPrice", (float) totalPrice);
+
+        // Guardar los productos en formato JSON
+        JSONArray jsonArray = new JSONArray();
+        for (Card card : cardList) {
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("product_name", card.getPname());
+                jsonObject.put("price", card.getPrice());
+                jsonObject.put("quantity", card.getQuantity());
+                double totalPriceForOne = Integer.parseInt(card.getQuantity()) * Double.parseDouble(card.getPrice());
+                jsonObject.put("total_price", totalPriceForOne);
+                jsonArray.put(jsonObject);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        editor.putString("productList", jsonArray.toString());
+
+        editor.apply();
     }
 }

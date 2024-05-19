@@ -9,12 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CommandAdapter extends RecyclerView.Adapter<CommandAdapter.CommandViewHolder> {
 
     private Cursor mCursor;
+    private List<CommandDetail> commandDetails;
 
-    public CommandAdapter(Cursor cursor) {
+    public CommandAdapter(Cursor cursor, List<CommandDetail> commandDetails) {
         mCursor = cursor;
+        this.commandDetails = commandDetails;
     }
 
     @NonNull
@@ -40,14 +45,30 @@ public class CommandAdapter extends RecyclerView.Adapter<CommandAdapter.CommandV
         @SuppressLint("Range") String address = mCursor.getString(mCursor.getColumnIndex("address"));
 
         holder.textViewId.setText(String.valueOf(id));
-        holder.textViewName.setText(name);
-        holder.textViewLastname.setText(lastname);
-        holder.textViewPhone.setText(phone);
-        holder.textViewCity.setText(city);
-        holder.textViewDate.setText(date);
-        holder.textViewAddress.setText(address);
+        holder.textViewName.setText("Nombre: "+name);
+        holder.textViewLastname.setText("Apellido: "+lastname);
+        holder.textViewPhone.setText("Telefono: "+phone);
+        holder.textViewCity.setText("Ciudad/Pueblo: "+city);
+        holder.textViewDate.setText("Fecha de pedido: "+date);
+        holder.textViewAddress.setText("Direccion: "+address);
 
+        // Filtrar la lista de detalles de productos para obtener solo los detalles del producto del pedido actual
+        List<CommandDetail> filteredDetails = new ArrayList<>();
+        for (CommandDetail detail : commandDetails) {
+            if (detail.getCommandId() == id) {
+                filteredDetails.add(detail);
+            }
+        }
+
+        // Mostrar los detalles del producto
+        for (CommandDetail detail : filteredDetails) {
+            holder.textViewProductName.append("Nombre producto: "+detail.getProductName() + "\n");
+            holder.textViewProductPrice.append("Precio Unitario: "+detail.getPrice() + "\n");
+            holder.textViewProductQuantity.append("Cantidad: "+detail.getQuantity() + "\n");
+            holder.textViewProductTotalPrice.append("Precio X Cantidad: "+detail.getTotalPrice() + "\n");
+        }
     }
+
 
     @Override
     public int getItemCount() {
@@ -57,6 +78,7 @@ public class CommandAdapter extends RecyclerView.Adapter<CommandAdapter.CommandV
     public static class CommandViewHolder extends RecyclerView.ViewHolder {
 
         public TextView textViewId, textViewName, textViewLastname, textViewCity, textViewDate, textViewAddress, textViewPhone;
+        public TextView textViewProductName, textViewProductPrice, textViewProductQuantity, textViewProductTotalPrice;
 
         public CommandViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,6 +89,11 @@ public class CommandAdapter extends RecyclerView.Adapter<CommandAdapter.CommandV
             textViewCity = itemView.findViewById(R.id.textViewCity);
             textViewDate = itemView.findViewById(R.id.textViewDate);
             textViewAddress = itemView.findViewById(R.id.textViewAddress);
+
+            textViewProductName = itemView.findViewById(R.id.textViewProductName);
+            textViewProductPrice = itemView.findViewById(R.id.textViewProductPrice);
+            textViewProductQuantity = itemView.findViewById(R.id.textViewProductQuantity);
+            textViewProductTotalPrice = itemView.findViewById(R.id.textViewProductTotalPrice);
         }
     }
 }

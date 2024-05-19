@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     // Nombre de la base de datos
@@ -63,6 +66,17 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                 + "time TEXT)";
         db.execSQL(createProductTableQuery);
 
+        // Crear tabla detalled pedido
+        String createCommandDetailTableQuery = "CREATE TABLE IF NOT EXISTS command_detail ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "product_name TEXT,"
+                + "price TEXT,"
+                + "quantity INTEGER,"
+                + "total_price REAL,"
+                + "command_id INTEGER," // Agregada la columna command_id
+                + "FOREIGN KEY (command_id) REFERENCES commands(id))";
+        db.execSQL(createCommandDetailTableQuery);
+
         // Crear tabla de carrito
         String createCardTableQuery = "CREATE TABLE IF NOT EXISTS cards ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -80,9 +94,6 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL(createCardTableQuery);
     }
 
-
-
-
     // Método para actualizar la estructura de la base de datos
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -91,6 +102,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS commands");
         db.execSQL("DROP TABLE IF EXISTS products");
         db.execSQL("DROP TABLE IF EXISTS cards");
+        db.execSQL("DROP TABLE IF EXISTS command_detail");
         // Crear la estructura de la base de datos nuevamente
         onCreate(db);
     }
@@ -117,8 +129,29 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         // Ejecuta la consulta y devuelve el cursor con los resultados
         return db.rawQuery(query, null);
     }
+
     public Cursor getAllCommands(SQLiteDatabase db) {
         String query = "SELECT id, name, lastname, phone, city, date, address FROM commands";
         return db.rawQuery(query, null);
+    }
+
+    public List<CommandDetail> getCommandDetails(SQLiteDatabase db, long commandId) {
+        List<CommandDetail> details = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM command_detail WHERE command_id = ?", new String[]{String.valueOf(commandId)});
+
+        if (cursor.moveToFirst()) {
+            do {
+                long id = cursor.getLong(cursor.getColumnIndexOrThrow("id"));
+                long cmdId = cursor.getLong(cursor.getColumnIndexOrThrow("command_id"));
+                String productName = cursor.getString(cursor.getColumnIndexOrThrow("product_name"));
+                String price = cursor.getString(cursor.getColumnIndexOrThrow("price"));
+                int quantity = cursor.getInt(cursor.getColumnIndexOrThrow("quantity"));
+                double totalPrice = cursor.getDouble(cursor.getColumnIndexOrThrow("total_price"));
+
+                details.add(new CommandDetail(id, cmdId, productName, price, quantity, totalPrice));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return details;
     }
 }
