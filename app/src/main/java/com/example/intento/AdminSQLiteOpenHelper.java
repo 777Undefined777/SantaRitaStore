@@ -154,4 +154,9 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         cursor.close();
         return details;
     }
+
+    // Método para eliminar un producto de la base de datos
+    public void deleteProduct(SQLiteDatabase db, int productId) {
+        db.delete("products", "id = ?", new String[]{String.valueOf(productId)});
+    }
 }

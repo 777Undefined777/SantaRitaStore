@@ -44,7 +44,7 @@ public class AdminHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Agregar aquí la lógica para ver los comandos
-                Intent intent = new Intent(AdminHomeActivity.this, DeleteProduct.class);
+                Intent intent = new Intent(AdminHomeActivity.this, DeleteProducts.class);
                 startActivity(intent);
             }
         });

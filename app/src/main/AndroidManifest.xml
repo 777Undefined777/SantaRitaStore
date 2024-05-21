@@ -21,6 +21,12 @@
         <activity
             android:name=".CommandAdminCheck"
             android:exported="false" />
+
+        <activity
+            android:name=".DeleteProducts"
+            android:exported="true"
+             />
+
         <activity
             android:name=".HomeActivity"
             android:exported="false"
@@ -46,6 +52,7 @@
         <activity android:name=".show_product" />
         <activity android:name=".ProductDetail" />
         <activity android:name=".card_activity" />
+
     </application>
 
 </manifest>

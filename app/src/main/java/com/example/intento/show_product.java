@@ -1,3 +1,4 @@
+// show_product.java
 package com.example.intento;
 
 import android.annotation.SuppressLint;
@@ -57,12 +58,13 @@ public class show_product extends Fragment implements ProductAdapter.OnProductCl
         if (cursor != null && cursor.moveToFirst()) {
             // Iterar a través del cursor y agregar los productos a la lista
             do {
+                @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("id"));
                 @SuppressLint("Range") String productName = cursor.getString(cursor.getColumnIndex("pname"));
                 @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex("description"));
                 @SuppressLint("Range") String price = cursor.getString(cursor.getColumnIndex("price"));
                 @SuppressLint("Range") String image = cursor.getString(cursor.getColumnIndex("image"));
 
-                Product product = new Product(productName, description, price, image);
+                Product product = new Product(id, productName, description, price, image, "", "", "");
                 productList.add(product);
             } while (cursor.moveToNext());
 
