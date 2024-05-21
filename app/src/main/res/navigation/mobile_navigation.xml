@@ -63,4 +63,9 @@
             android:id="@+id/action_sessionUserClose_to_settingsActivity"
             app:destination="@id/settingsActivity" />
     </fragment>
+    <fragment
+        android:id="@+id/shipment"
+        android:name="com.example.intento.Shipment"
+        android:label="fragment_shipment"
+        tools:layout="@layout/fragment_shipment" />
 </navigation>

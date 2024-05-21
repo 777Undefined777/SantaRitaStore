@@ -32,6 +32,18 @@
 
 
             />
+
+        <item
+            android:id="@+id/shipment"
+            android:icon="@drawable/room_24dp"
+            android:title="Estado Pedido"
+
+
+
+
+            />
+
+
         <item
             android:id="@+id/sessionUserClose"
             android:icon="@drawable/logout"
