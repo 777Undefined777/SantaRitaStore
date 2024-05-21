@@ -136,9 +136,30 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/card_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="260dp"
         android:layout_below="@+id/Rlayout1"
-        android:layout_above="@+id/l4"/>
+        android:layout_marginBottom="10dp" />
+
+    <!-- Botón siguiente -->
+    <RelativeLayout
+        android:id="@+id/l4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card_list"
+        android:layout_margin="10dp">
+
+        <Button
+            android:id="@+id/next_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginRight="80dp"
+            android:text="Siguiente"
+            android:textSize="18dp" />
+
+    </RelativeLayout>
 
     <!-- Mensaje de confirmación -->
     <TextView
@@ -152,28 +173,4 @@
         android:text="Félicitation, Votre commande est entrain d'etre traité"
         android:textSize="20dp"
         android:visibility="gone"/>
-
-    <!-- Botón siguiente -->
-    <RelativeLayout
-        android:id="@+id/l4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="10dp">
-
-        <Button
-            android:id="@+id/next_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="15dp"
-            android:text="Siguiente"
-            android:textSize="18dp" />
-
-    </RelativeLayout>
-
 </RelativeLayout>
