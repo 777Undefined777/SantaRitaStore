@@ -50,7 +50,7 @@ public class Shipment extends Fragment {
             public void onClick(View v) {
                 // Acción al hacer clic en el botón "VER"
                 // Por ejemplo, navegar a otra actividad o fragmento
-                Intent intent = new Intent(getActivity(), ProductDetail.class); // Reemplaza AnotherActivity con la actividad que desees
+                Intent intent = new Intent(getActivity(), WebViewActivity.class); // Reemplaza AnotherActivity con la actividad que desees
                 startActivity(intent);
             }
         });

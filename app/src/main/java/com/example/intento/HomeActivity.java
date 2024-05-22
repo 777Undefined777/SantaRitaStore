@@ -62,7 +62,7 @@ public class HomeActivity extends AppCompatActivity {
         txtNombreUsuario.setText(nombreUsuario);
 
 
-        // Configura HomeViewModel y observa la redirección a ShowProduct
+
 
     }
 
