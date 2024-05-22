@@ -5,16 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".Shipment">
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        >
+        android:layout_marginRight="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,7 +24,7 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_gravity="center"
-                android:background="@drawable/iconor"/>
+                android:background="@drawable/ic_transport" />
 
             <LinearLayout
                 android:layout_weight="1"
@@ -42,19 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="Usuario"
-
-                    android:textSize="16dp"
-                    android:textStyle="bold" />
-
-
-                <TextView
-                    android:id="@+id/command_phone_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="Numero"
-                    android:textColor="#2d2d2d"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -64,9 +49,7 @@
                     android:layout_marginTop="3dp"
                     android:text="La playa de belen"
                     android:textColor="#b2b2b2" />
-
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_weight="1"
@@ -81,14 +64,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
                     android:layout_marginBottom="25dp"
-
+                    android:background="@color/material_dynamic_primary95"
                     android:gravity="center"
                     android:text="VER"
-                    />
-
+                    android:textColor="@android:color/white"/>
             </LinearLayout>
-
-
         </LinearLayout>
 
         <LinearLayout
@@ -110,7 +90,7 @@
                 android:layout_height="13dp"
                 android:layout_marginLeft="15dp"
                 android:layout_gravity="center"
-                android:background="@drawable/ic_clock"/>
+                android:src="@drawable/ic_clock" />
 
             <TextView
                 android:id="@+id/command_date_time"
@@ -118,9 +98,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:text="6h 21m "
+                android:text="1 Dia "
                 android:textColor="#b2b2b2" />
-
 
             <TextView
                 android:id="@+id/command_total_price"
@@ -131,11 +110,7 @@
                 android:gravity="right"
                 android:text="Precio"
                 android:textColor="#2c2c2c"
-                android:textSize="15dp" />
-
+                android:textSize="15sp" />
         </LinearLayout>
-
-
     </LinearLayout>
-
 </FrameLayout>

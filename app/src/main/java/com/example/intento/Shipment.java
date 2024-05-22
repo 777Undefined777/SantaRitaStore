@@ -1,64 +1,70 @@
 package com.example.intento;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Shipment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.fragment.app.Fragment;
+
 public class Shipment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private TextView commandUserName;
+    private TextView btnAllProduct;
+    private TextView commandTotalPrice; // Declarar commandTotalPrice
 
     public Shipment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Shipment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Shipment newInstance(String param1, String param2) {
-        Shipment fragment = new Shipment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shipment, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_shipment, container, false);
+
+        commandUserName = rootView.findViewById(R.id.command_user_name);
+        btnAllProduct = rootView.findViewById(R.id.btn_all_product);
+        commandTotalPrice = rootView.findViewById(R.id.command_total_price); // Inicializar commandTotalPrice
+
+        // Obtener el nombre de usuario desde SharedPreferences y mostrarlo
+        String nombreUsuario = obtenerNombreUsuario();
+        commandUserName.setText(nombreUsuario);
+
+        // Obtener y mostrar el total del precio desde SharedPreferences
+        float totalPrice = obtenerTotalPrice();
+        commandTotalPrice.setText(String.format("Precio: %.2f", totalPrice));
+
+        // Configurar el OnClickListener para el botón "VER"
+        btnAllProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Acción al hacer clic en el botón "VER"
+                // Por ejemplo, navegar a otra actividad o fragmento
+                Intent intent = new Intent(getActivity(), ProductDetail.class); // Reemplaza AnotherActivity con la actividad que desees
+                startActivity(intent);
+            }
+        });
+
+        return rootView;
+    }
+
+    private String obtenerNombreUsuario() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        return preferences.getString("nombre_usuario", "Usuario");
+    }
+
+    private float obtenerTotalPrice() {
+        SharedPreferences preferences = getActivity().getSharedPreferences("CardData", Context.MODE_PRIVATE);
+        return preferences.getFloat("totalPrice", 0.0f);
     }
 }
