@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.intento.model.Product;
-import java.io.ByteArrayInputStream;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
@@ -50,8 +49,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.productDescription.setText(product.getDescription());
         holder.productPrice.setText("COP $" + product.getPrice());
 
-        // Cargar la imagen desde la base de datos utilizando AsyncTask
-        new ImageLoadTask(product.getImage(), holder.productImage, context).execute();
+        // Convert byte array to Bitmap and set to ImageView
+        byte[] imageBytes = product.getImage();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+        holder.productImage.setImageBitmap(bitmap);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +62,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 }
             }
         });
+
     }
 
     @Override
@@ -78,51 +80,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             productDescription = itemView.findViewById(R.id.product_description);
             productPrice = itemView.findViewById(R.id.product_price);
             productImage = itemView.findViewById(R.id.product_image);
-        }
-    }
-
-    private static class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
-        private String imageUrl;
-        private ImageView imageView;
-        private Context context;
-
-        public ImageLoadTask(String imageUrl, ImageView imageView, Context context) {
-            this.imageUrl = imageUrl;
-            this.imageView = imageView;
-            this.context = context;
-        }
-
-        @Override
-        protected Bitmap doInBackground(Void... params) {
-            try {
-                // Abrir la base de datos en modo lectura
-                AdminSQLiteOpenHelper dbHelper = new AdminSQLiteOpenHelper(context);
-                SQLiteDatabase db = dbHelper.getReadableDatabase();
-
-                // Realizar una consulta para obtener la imagen según la URL
-                Cursor cursor = db.rawQuery("SELECT image FROM products WHERE image=?", new String[]{imageUrl});
-
-                Bitmap bitmap = null;
-                // Si se encuentra la imagen en la base de datos, decodificarla
-                if (cursor != null && cursor.moveToFirst()) {
-                    byte[] imageBytes = cursor.getBlob(0);
-                    ByteArrayInputStream inputStream = new ByteArrayInputStream(imageBytes);
-                    bitmap = BitmapFactory.decodeStream(inputStream);
-                    cursor.close();
-                }
-                db.close();
-                return bitmap;
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap result) {
-            if (result != null) {
-                imageView.setImageBitmap(result);
-            }
         }
     }
 }

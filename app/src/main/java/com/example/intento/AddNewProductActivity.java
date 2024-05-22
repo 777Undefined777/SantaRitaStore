@@ -3,10 +3,12 @@ package com.example.intento;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.text.TextUtils;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
@@ -47,26 +50,11 @@ public class AddNewProductActivity extends AppCompatActivity {
         loadingBar = new ProgressDialog(this);
         ret = findViewById(R.id.ret);
 
-        ret.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        ret.setOnClickListener(v -> finish());
 
-            }
-        });
+        inputProductImage.setOnClickListener(view -> openGallery());
 
-        inputProductImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openGallery();
-            }
-        });
-
-        addNewProductButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                validateProductData();
-            }
-        });
+        addNewProductButton.setOnClickListener(view -> validateProductData());
     }
 
     private void openGallery() {
@@ -125,8 +113,14 @@ public class AddNewProductActivity extends AppCompatActivity {
         // Obtener la base de datos writable
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
+        // Convertir la imagen a byte array
+        Bitmap bitmap = ((BitmapDrawable) inputProductImage.getDrawable()).getBitmap();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+        byte[] imageBytes = outputStream.toByteArray();
+
         // Agregar el producto a la base de datos
-        dbHelper.addProduct(db, pName, description, price, imageUri.toString(), categoryName, saveCurrentDate, saveCurrentTime);
+        dbHelper.addProduct(db, pName, description, price, imageBytes, categoryName, saveCurrentDate, saveCurrentTime);
 
         loadingBar.dismiss();
 

@@ -60,7 +60,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                 + "pname TEXT,"
                 + "description TEXT,"
                 + "price TEXT,"
-                + "image TEXT,"
+                + "image blob,"
                 + "category TEXT,"
                 + "date TEXT,"
                 + "time TEXT)";
@@ -108,12 +108,12 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     }
 
     // Método para agregar un nuevo producto a la base de datos
-    public void addProduct(SQLiteDatabase db, String productName, String description, String price, String imageUrl, String category, String date, String time) {
+    public void addProduct(SQLiteDatabase db, String productName, String description, String price, byte [] image, String category, String date, String time) {
         ContentValues values = new ContentValues();
         values.put("pname", productName);
         values.put("description", description);
         values.put("price", price);
-        values.put("image", imageUrl);
+        values.put("image", image);
         values.put("category", category);
         values.put("date", date);
         values.put("time", time);

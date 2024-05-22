@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,19 +51,15 @@ public class show_product extends Fragment implements ProductAdapter.OnProductCl
     // Método para cargar los productos desde la base de datos SQLite
     private void loadProducts() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-
-        // Obtener todos los productos de la base de datos
         Cursor cursor = dbHelper.getAllProducts(db);
 
-        // Verificar si el cursor tiene algún resultado
         if (cursor != null && cursor.moveToFirst()) {
-            // Iterar a través del cursor y agregar los productos a la lista
             do {
                 @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("id"));
                 @SuppressLint("Range") String productName = cursor.getString(cursor.getColumnIndex("pname"));
                 @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex("description"));
                 @SuppressLint("Range") String price = cursor.getString(cursor.getColumnIndex("price"));
-                @SuppressLint("Range") String image = cursor.getString(cursor.getColumnIndex("image"));
+                @SuppressLint("Range") byte[] image = cursor.getBlob(cursor.getColumnIndex("image"));
 
                 Product product = new Product(id, productName, description, price, image, "", "", "");
                 productList.add(product);
@@ -70,11 +67,9 @@ public class show_product extends Fragment implements ProductAdapter.OnProductCl
 
             cursor.close();
         } else {
-            // Mostrar un mensaje si no se encontraron productos
             Toast.makeText(getActivity(), "No se encontraron productos", Toast.LENGTH_SHORT).show();
         }
 
-        // Configurar el adaptador del RecyclerView
         productAdapter = new ProductAdapter(getActivity(), productList);
         productAdapter.setOnProductClickListener(this);
         recyclerView.setAdapter(productAdapter);
@@ -82,17 +77,15 @@ public class show_product extends Fragment implements ProductAdapter.OnProductCl
 
     @Override
     public void onProductClick(Product product) {
-        // Manejar el clic del producto aquí, por ejemplo, abrir una nueva actividad
-        // con la información del producto
-        // Puedes usar un Intent aquí para iniciar una nueva actividad
-        // y pasar la información del producto como extras del Intent
-        // Ejemplo:
-
         Intent intent = new Intent(getActivity(), ProductDetail.class);
         intent.putExtra("productName", product.getPname());
         intent.putExtra("productDescription", product.getDescription());
         intent.putExtra("productPrice", product.getPrice());
-        intent.putExtra("productImage", product.getImage());
+
+        // Convert the byte array to a Base64 string for the Intent
+        String imageBase64 = Base64.encodeToString(product.getImage(), Base64.DEFAULT);
+        intent.putExtra("productImage", imageBase64);
+
         startActivity(intent);
     }
 }

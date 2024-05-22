@@ -1,4 +1,3 @@
-// Product.java
 package com.example.intento.model;
 
 public class Product {
@@ -6,13 +5,12 @@ public class Product {
     private String pname;
     private String description;
     private String price;
-    private String image;
+    private byte[] image;
     private String category;
     private String date;
     private String time;
 
-    // Constructor
-    public Product(int id, String pname, String description, String price, String image, String category, String date, String time) {
+    public Product(int id, String pname, String description, String price, byte[] image, String category, String date, String time) {
         this.id = id;
         this.pname = pname;
         this.description = description;
@@ -23,7 +21,6 @@ public class Product {
         this.time = time;
     }
 
-    // Getters y setters
     public int getId() {
         return id;
     }
@@ -40,7 +37,7 @@ public class Product {
         return price;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
@@ -72,7 +69,7 @@ public class Product {
         this.price = price;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 

@@ -44,6 +44,7 @@ public class ProductDetail extends AppCompatActivity {
         productDescriptionTextView.setText(productDescription);
         productPriceTextView.setText("COP $" + productPrice);
 
+
         // Configurar el OnClickListener para el botón "Añadir al carrito"
         findViewById(R.id.product_add_to_card_btn).setOnClickListener(new View.OnClickListener() {
             @Override
