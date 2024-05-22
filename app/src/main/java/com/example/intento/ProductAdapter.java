@@ -1,11 +1,10 @@
 package com.example.intento;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.intento.model.Product;
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
@@ -49,9 +49,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.productDescription.setText(product.getDescription());
         holder.productPrice.setText("COP $" + product.getPrice());
 
-        // Convert byte array to Bitmap and set to ImageView
-        byte[] imageBytes = product.getImage();
-        Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+        // Convertir la cadena Base64 de la imagen del producto a Bitmap
+        Bitmap bitmap = BitmapFactory.decodeByteArray(product.getImage(), 0, product.getImage().length);
+
+        // Establecer la imagen en el ImageView
         holder.productImage.setImageBitmap(bitmap);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +63,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 }
             }
         });
-
     }
 
     @Override
@@ -81,5 +81,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             productPrice = itemView.findViewById(R.id.product_price);
             productImage = itemView.findViewById(R.id.product_image);
         }
+    }
+
+    // Método para convertir Bitmap a cadena Base64
+    private String bitmapToBase64(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(byteArray, Base64.DEFAULT);
+    }
+
+    // Método para convertir cadena Base64 a Bitmap
+    private Bitmap base64ToBitmap(String base64String) {
+        byte[] decodedString = Base64.decode(base64String, Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
     }
 }
