@@ -47,6 +47,7 @@
             android:background="#00000000"
             android:hint="Nombre de producto"
             android:inputType="text"
+            android:maxLength="18"
             android:textColor="@color/black"
             android:textColorHint="@color/black" />
 
