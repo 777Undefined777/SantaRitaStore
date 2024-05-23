@@ -1,111 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:layout_marginStart="30dp"
-    android:layout_marginEnd="30dp"
-    android:paddingBottom="32dp">
+    tools:context=".ActivityRegistrar">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Registrar Usuario"
-        android:textSize="24sp"
-        android:gravity="center" />
-
+    <!-- Background ImageView -->
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/cannpng"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/def"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <!-- CardView for Register Form -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/iconocannabis"
-        android:adjustViewBounds="true"
-        android:maxWidth="148dp"
-        android:maxHeight="27dp"
-        android:scaleType="fitCenter"
-        />
+        android:layout_margin="16dp"
+        android:backgroundTint="#CCFFFFFF"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <EditText
-        android:id="@+id/register_username_input"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginTop="25dp"
-        android:background="#E7EAE9"
-        android:hint="Ingresa tu nombre"
-        android:inputType="text"
-        android:maxLength="20"
-        android:textColorHint="@color/black" />
-
-    <EditText
-        android:id="@+id/register_phone_number_input"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:layout_marginTop="10dp"
-        android:background="#E7EAE9"
-        android:hint="Ingresa tu número aquí"
-        android:inputType="number"
-        android:maxLength="10"
-        android:textColorHint="@color/black" />
-
-    <EditText
-        android:id="@+id/register_password_input"
-        android:layout_width="match_parent"
-        android:layout_height="53dp"
-        android:layout_marginTop="10dp"
-        android:background="#E7EAE9"
-        android:hint="Ingresa tu contraseña"
-        android:inputType="textPassword"
-        android:maxLength="20"
-        android:textColorHint="@color/black" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/radioButtonMale"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hombre"
-            android:checked="true" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <RadioButton
-            android:id="@+id/radioButtonFemale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mujer" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Registrar Usuario"
+                android:textSize="24sp"
+                android:gravity="center" />
 
-        <RadioButton
-            android:id="@+id/radioButtonOther"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No especificar" />
-    </RadioGroup>
+            <!-- CardView for the Image -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
 
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:layout_marginTop="16dp"
-        android:text="Registrar"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop" />
+            </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/iconocannabis"
+                android:adjustViewBounds="true"
+                android:maxWidth="148dp"
+                android:maxHeight="27dp"
+                android:scaleType="fitCenter" />
+
+            <EditText
+                android:id="@+id/register_username_input"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Ingresa tu nombre"
+                android:inputType="text"
+                android:maxLength="20"
+                android:padding="16dp"
+                android:textColorHint="@color/black" />
+
+            <EditText
+                android:id="@+id/register_phone_number_input"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Ingresa tu número aquí"
+                android:inputType="number"
+                android:maxLength="10"
+                android:padding="16dp"
+                android:textColorHint="@color/black" />
+
+            <EditText
+                android:id="@+id/register_password_input"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Ingresa tu contraseña"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:padding="16dp"
+                android:textColorHint="@color/black" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hombre"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mujer" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No especificar" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                style="@style/RoundedButton"
+                android:text="Registrar"
+                android:textSize="18sp"
+                android:backgroundTint="@color/dark_blue"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

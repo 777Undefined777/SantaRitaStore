@@ -52,7 +52,7 @@ public class AdminHomeActivity extends AppCompatActivity {
         btn_add_category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminHomeActivity.this, AdminCategoryActivity.class);
+                Intent intent = new Intent(AdminHomeActivity.this, AddNewProductActivity.class);
                 startActivity(intent);
             }
         });

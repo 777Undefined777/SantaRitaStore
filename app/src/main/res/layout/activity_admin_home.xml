@@ -1,63 +1,135 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdminHomeActivity">
 
-    <Button
-        android:id="@+id/btn_add_product"
+    <!-- Background ImageView -->
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
-        android:text="Añadir un producto"
-        android:textAllCaps="false"
-        android:textSize="20dp" />
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/def"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/btn_command"
-        android:layout_width="match_parent"
+    <!-- CardView for Admin Module -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_add_product"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:text="Lista de Pedidos"
-        android:textAllCaps="false"
-        android:textSize="18dp" />
+        android:layout_margin="16dp"
+        android:backgroundTint="#CCFFFFFF"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <Button
-        android:id="@+id/btn_delete_products_admin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btn_command"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:text="Eliminar Producto"
-        android:textAllCaps="false"
-        android:textSize="20dp" />
+        <!-- Admin Module Content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <Button
-        android:id="@+id/btn_logout_admin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btn_delete_products_admin"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:text="Cerrar Sesion"
-        android:textAllCaps="false"
-        android:textSize="20dp" />
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="serif"
+                android:text="Santa Rita Store"
+                android:textColor="@color/black"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:shadowColor="#808080"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="4" />
 
-</RelativeLayout>
+            <!-- Logo Image -->
+            <ImageView
+                android:id="@+id/admin_image"
+                android:layout_width="190dp"
+                android:layout_height="190dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/admin"
+                app:layout_constraintTop_toBottomOf="@id/txt1"
+                app:layout_constraintBottom_toTopOf="@id/btn_add_product"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Author Text -->
+            <TextView
+                android:id="@+id/txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:fontFamily="sans-serif-light"
+                android:text="Admin"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:shadowColor="#808080"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2" />
+
+            <!-- Buttons -->
+            <Button
+                android:id="@+id/btn_add_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                style="@style/RoundedButton"
+                android:text="Añadir un producto"
+                android:backgroundTint="@color/dark_blue"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif" />
+
+            <Button
+                android:id="@+id/btn_command"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                style="@style/RoundedButton"
+                android:text="Lista de Pedidos"
+                android:backgroundTint="@color/dark_blue"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif" />
+
+            <Button
+                android:id="@+id/btn_delete_products_admin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                style="@style/RoundedButton"
+                android:text="Eliminar Producto"
+                android:backgroundTint="@color/dark_blue"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif" />
+
+            <Button
+                android:id="@+id/btn_logout_admin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                style="@style/RoundedButton"
+                android:text="Cerrar Sesion"
+                android:backgroundTint="@color/dark_blue"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,24 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+
+
     <color name="white">#FFFFFFFF</color>
     <color name="material_dynamic_primary95">#00BCD4</color>
+    <color name="colorShadow">#80000000</color>
+    <color name="green_fluorescent">#00FF00</color>
+    <!-- colors.xml -->
+    <color name="white_translucent">#C5C5C5</color>
+    <color name="white_translucent_less">@color/white</color>
+
+    <color name="blue_dark">#003366</color>
+    <color name="blue_dark_variant">#002244</color>
+    <color name="gold">#DAA520</color>
+    <color name="gold_variant">#B8860B</color>
+    <color name="white_transparent">#80FFFFFF</color>
+    <!-- Blanco con 70% de opacidad -->
+
+    <color name="dark_blue">#002366</color>
+    <color name="translucent_white">#CCFFFFFF</color>
+
 </resources>

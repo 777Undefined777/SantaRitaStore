@@ -8,53 +8,37 @@
         <item
             android:id="@+id/card_activity"
             android:icon="@drawable/cart"
-            android:title="carrito"
+            android:title="Carrito"
+            android:iconTint="@color/dark_blue"
+            android:titleTextColor="@color/black" />
 
-
-
-
-            />
         <item
             android:id="@+id/show_product"
             android:icon="@drawable/category"
             android:title="Productos"
+            android:iconTint="@color/dark_blue"
+            android:titleTextColor="@color/black" />
 
-
-
-
-            />
         <item
             android:id="@+id/settingsActivity"
             android:icon="@drawable/settings_24dp"
-            android:title="Configuracion"
-
-
-
-
-            />
+            android:title="Configuración"
+            android:iconTint="@color/dark_blue"
+            android:titleTextColor="@color/black" />
 
         <item
             android:id="@+id/shipment"
             android:icon="@drawable/room_24dp"
             android:title="Estado Pedido"
-
-
-
-
-            />
-
+            android:iconTint="@color/dark_blue"
+            android:titleTextColor="@color/black" />
 
         <item
             android:id="@+id/sessionUserClose"
             android:icon="@drawable/logout"
-            android:title="Cerrar Sesion"
-
-
-
-
-            />
-
-
+            android:title="Cerrar Sesión"
+            android:iconTint="@color/dark_blue"
+            android:titleTextColor="@color/black" />
 
     </group>
 </menu>
