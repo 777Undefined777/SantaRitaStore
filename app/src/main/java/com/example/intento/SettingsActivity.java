@@ -76,6 +76,7 @@ public class SettingsActivity extends Fragment {
             public void onClick(View v) {
                 updateUserData();
             }
+
         });
 
         return view;
@@ -142,6 +143,7 @@ public class SettingsActivity extends Fragment {
         // Mostrar mensaje con Toast dependiendo del resultado
         if (rowsUpdated > 0) {
             Toast.makeText(getActivity(), "Datos del usuario actualizados exitosamente", Toast.LENGTH_SHORT).show();
+
             // Puedes agregar lógica adicional aquí si es necesario, como volver a la actividad anterior
         } else {
             Toast.makeText(getActivity(), "Error al actualizar los datos del usuario", Toast.LENGTH_SHORT).show();

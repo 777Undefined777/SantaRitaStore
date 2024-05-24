@@ -27,8 +27,8 @@
     <style name="RoundedButton">
         <item name="android:background">@drawable/rounded_button</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:backgroundTint">@color/gold</item>
-        <item name="colorPrimary">@color/gold</item>
+        <item name="android:backgroundTint">@color/dark_blue</item>
+        <item name="colorPrimary">@color/dark_blue</item>
         <item name="android:padding">16dp</item>
 
     </style>

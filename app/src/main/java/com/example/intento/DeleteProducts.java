@@ -73,28 +73,34 @@ public class DeleteProducts extends AppCompatActivity {
         layoutParams.setMargins(20, 20, 20, 20);
         cardView.setLayoutParams(layoutParams);
         cardView.setPadding(20, 20, 20, 20);
-        cardView.setCardBackgroundColor(getResources().getColor(R.color.white));
+        cardView.setCardBackgroundColor(getResources().getColor(R.color.translucent_white));
         cardView.setRadius(15);
 
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
+        linearLayout.setPadding(16, 16, 16, 16); // Adding padding for better spacing
 
         TextView productNameTextView = new TextView(this);
         productNameTextView.setText(product.getPname());
+        productNameTextView.setTextColor(getResources().getColor(R.color.black));
         productNameTextView.setTextSize(20);
+        productNameTextView.setPadding(0, 0, 0, 8); // Padding bottom to separate from the next element
         linearLayout.addView(productNameTextView);
 
         TextView productPriceTextView = new TextView(this);
-        productPriceTextView.setText(product.getPrice());
+        productPriceTextView.setText("Precio: " + product.getPrice());
+        productPriceTextView.setTextColor(getResources().getColor(R.color.black));
         productPriceTextView.setTextSize(16);
+        productPriceTextView.setPadding(0, 0, 0, 8); // Padding bottom to separate from the next element
         linearLayout.addView(productPriceTextView);
 
         ImageView productImageView = new ImageView(this);
         Bitmap bitmap = BitmapFactory.decodeByteArray(product.getImage(), 0, product.getImage().length);
         productImageView.setImageBitmap(bitmap);
+        productImageView.setPadding(0, 0, 0, 16); // Padding bottom to separate from the button
         linearLayout.addView(productImageView);
 
-        Button deleteButton = new Button(this);
+        Button deleteButton = new Button(this, null, 0, R.style.RoundedButton);
         deleteButton.setText("Eliminar");
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,8 +109,8 @@ public class DeleteProducts extends AppCompatActivity {
                 linearLayoutProducts.removeView(cardView);
             }
         });
-        linearLayout.addView(deleteButton);
 
+        linearLayout.addView(deleteButton);
         cardView.addView(linearLayout);
 
         return cardView;

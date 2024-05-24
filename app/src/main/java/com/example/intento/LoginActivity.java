@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         // Verificar si las credenciales son del administrador
-        if (name.equals("andres") && phone.equals("666666666") && password.equals("jorge")) {
+        if (name.equals("andres") && phone.equals("3228847727") && password.equals("jorge")) {
             // Si las credenciales son para el administrador, inicia sesión y redirige a AdminHomeActivity
             Toast.makeText(this, "Inicio de sesión exitoso como administrador", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
