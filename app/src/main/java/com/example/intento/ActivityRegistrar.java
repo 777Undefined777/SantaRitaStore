@@ -113,9 +113,7 @@ public class ActivityRegistrar extends AppCompatActivity {
             }
 
             // Limpiar los campos de entrada después del registro
-            inputName.setText("");
-            inputPhone.setText("");
-            inputPassword.setText("");
+
         } else {
             // Si no se seleccionó ningún género
             loadingBar.dismiss();

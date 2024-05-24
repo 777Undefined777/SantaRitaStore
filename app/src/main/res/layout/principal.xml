@@ -33,7 +33,7 @@
         <!-- Login Form Content -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="397dp"
             android:orientation="vertical"
             android:padding="16dp">
 
@@ -43,30 +43,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="serif"
-                android:text="Santa Rita Store"
-                android:textColor="@color/black"
-                android:textSize="32sp"
-                android:textStyle="bold"
                 android:shadowColor="#808080"
                 android:shadowDx="2"
                 android:shadowDy="2"
-                android:shadowRadius="4" />
+                android:shadowRadius="4"
+                android:text="Santa Rita Store"
+                android:textColor="@color/black"
+                android:textSize="32sp"
+                android:textStyle="bold" />
 
             <!-- Logo Image in CardView -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
-
-                <ImageView
-                    android:layout_width="190dp"
-                    android:layout_height="190dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/dp" />
-            </androidx.cardview.widget.CardView>
 
             <!-- Author Text -->
             <TextView
@@ -76,38 +62,38 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif-light"
-                android:text="Programmed by: Jorge"
-                android:textColor="@color/black"
-                android:textSize="16sp"
                 android:shadowColor="#808080"
                 android:shadowDx="1"
                 android:shadowDy="1"
-                android:shadowRadius="2" />
+                android:shadowRadius="2"
+                android:text="Programmed by: Jorge"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <!-- Buttons -->
             <Button
                 android:id="@+id/btn_login"
+                style="@style/RoundedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                style="@style/RoundedButton"
-                android:text="Entrar"
                 android:backgroundTint="@color/dark_blue"
+                android:fontFamily="sans-serif"
+                android:text="Entrar"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:fontFamily="sans-serif" />
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btn_join"
+                style="@style/RoundedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                style="@style/RoundedButton"
-                android:text="Registrarse"
                 android:backgroundTint="@color/dark_blue"
+                android:fontFamily="sans-serif"
+                android:text="Registrarse"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:fontFamily="sans-serif" />
+                android:textSize="16sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

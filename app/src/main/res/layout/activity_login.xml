@@ -35,6 +35,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Iniciar Sesion"
+                android:textSize="24sp"
+                android:gravity="center"
+                />
 
             <!-- CardView for the Image -->
             <androidx.cardview.widget.CardView
@@ -46,19 +56,24 @@
                 app:cardElevation="4dp">
 
                 <ImageView
-                    android:layout_width="235dp"
-                    android:layout_height="114dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/dp" />
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
 
             <!-- ImageView "iconocannabis" -->
             <ImageView
-                android:layout_width="270dp"
-                android:layout_height="51dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/iconocannabis" />
+                android:layout_marginTop="16dp"
+                android:src="@drawable/iconocannabis"
+                android:adjustViewBounds="true"
+                android:maxWidth="148dp"
+                android:maxHeight="27dp"
+                android:scaleType="fitCenter" />
 
             <!-- EditText "login_name_input" -->
             <EditText
