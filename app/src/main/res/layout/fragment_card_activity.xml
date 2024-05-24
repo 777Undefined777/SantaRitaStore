@@ -1,146 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".card_activity">
 
-    <!-- Toolbar -->
-    <LinearLayout
-        android:id="@+id/Rlayout1"
+    <!-- Fondo de pantalla -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/def"
+        />
+
+
+    <!-- CardView containing the Toolbar and other elements -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#ffffff">
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="#CCFFFFFF">
 
-        <androidx.appcompat.widget.Toolbar
+        <LinearLayout
+            android:id="@+id/Rlayout1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/retour"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginLeft="15dp"
-                android:src="@drawable/ic_cross" />
-
-        </androidx.appcompat.widget.Toolbar>
-
-        <!-- Icono de carrito -->
-        <LinearLayout
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/circle4"
-            android:layout_marginTop="30dp">
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="12dp"
-                android:layout_marginBottom="2dp"
-                android:src="@drawable/nav_cart"/>
-        </LinearLayout>
-
-        <!-- Monto a pagar -->
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
-            android:text="Monto a pagar"
-            android:textColor="#000"
-            android:textSize="13dp" />
+            android:orientation="vertical"
+            android:backgroundTint="#CCFFFFFF">
 
-        <!-- Total -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp">
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="28dp"
-                android:src="@drawable/pesos"
-                android:layout_marginTop="10dp"/>
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/retour"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/ic_cross" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <!-- Icono de carrito -->
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/circle4"
+                android:layout_marginTop="30dp">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/nav_cart"/>
+            </LinearLayout>
+
+            <!-- Monto a pagar -->
             <TextView
-                android:id="@+id/total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="35.000"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:text="Monto a pagar"
                 android:textColor="#000"
-                android:textSize="35dp" />
-        </LinearLayout>
+                android:textSize="13dp" />
 
-        <!-- Separador -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.7dp"
-            android:background="#b1b1b1"
-            android:layout_marginTop="30dp"/>
-
-        <!-- Encabezado de la lista de productos -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="15dp">
-
-            <TextView
-                android:layout_width="2dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Producto"
-                android:textColor="@color/black"
-                android:textSize="12dp"
-                android:textStyle="bold" />
-
-            <TextView
+            <!-- Total -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Precio"
-                android:textColor="@color/black"
-                android:textSize="12dp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/pesos"
+                    android:layout_marginTop="10dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="35.000"
+                    android:textColor="#000"
+                    android:textSize="35dp" />
+            </LinearLayout>
+
+            <!-- Separador -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.7dp"
+                android:background="#b1b1b1"
+                android:layout_marginTop="30dp"/>
+
+            <!-- Encabezado de la lista de productos -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Cantidad"
-                android:textColor="@color/black"
-                android:textSize="12dp"
-                android:textStyle="bold"/>
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp">
 
-        <!-- Separador -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.7dp"
-            android:background="#b1b1b1"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="5dp"/>
-    </LinearLayout>
+                <TextView
+                    android:layout_width="2dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Producto"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Precio"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Cantidad"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <!-- Separador -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.7dp"
+                android:background="#b1b1b1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
 
     <!-- RecyclerView para mostrar los productos -->
+
+    <!-- Botón siguiente -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/card_list"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:layout_below="@+id/Rlayout1"
-        android:layout_marginBottom="10dp" />
+        android:layout_height="182dp"
+        android:layout_below="@+id/cardView"
+        android:layout_marginTop="3dp"
+        android:background="#CCFFFFFF" />
 
-    <!-- Botón siguiente -->
     <RelativeLayout
         android:id="@+id/l4"
         android:layout_width="match_parent"
@@ -152,12 +178,12 @@
             android:id="@+id/next_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginRight="80dp"
+            android:layout_marginTop="16dp"
+            style="@style/RoundedButton"
             android:text="Siguiente"
-            android:textSize="18dp" />
+            android:textSize="18sp"
+            android:backgroundTint="@color/dark_blue"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 

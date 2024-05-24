@@ -25,5 +25,10 @@
 
     <color name="dark_blue">#002366</color>
     <color name="translucent_white">#CCFFFFFF</color>
+    <color name="card_background">#CCFFFFFF</color>
+    <color name="text_color">#26292e</color>
+    <color name="price_color">#339c5d</color>
+    <color name="description_color">#000000</color>
+
 
 </resources>

@@ -1,86 +1,114 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="16dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    android:layout_height="match_parent"
+    >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!-- Background ImageView -->
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/def"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hacer Pedido"
-            android:textSize="24sp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"/>
+    <!-- CardView para el formulario de hacer pedido -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="#CCFFFFFF"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Campos de entrada -->
-        <EditText
-            android:id="@+id/editTextNombre"
+        <!-- LinearLayout con el contenido del CardView -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView"
-            android:layout_marginTop="16dp"
-            android:hint="Nombre" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <EditText
-            android:id="@+id/editTextApellido"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Apellido"
-            android:layout_below="@id/editTextNombre"
-            android:layout_marginTop="16dp"/>
+            <!-- TextView "Hacer Pedido" -->
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hacer Pedido"
+                android:textSize="24sp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/black"/>
 
-        <EditText
-            android:id="@+id/editTextDireccion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Dirección"
-            android:layout_below="@id/editTextApellido"
-            android:layout_marginTop="16dp"/>
+            <!-- EditTexts para el nombre, apellido, dirección, teléfono, ciudad y cédula -->
+            <EditText
+                android:id="@+id/editTextNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Nombre" />
 
-        <EditText
-            android:id="@+id/editTextTelefono"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Teléfono"
-            android:inputType="phone"
-            android:layout_below="@id/editTextDireccion"
-            android:layout_marginTop="16dp"/>
+            <EditText
+                android:id="@+id/editTextApellido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Apellido" />
 
-        <EditText
-            android:id="@+id/editTextCiudad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ciudad"
-            android:layout_below="@id/editTextTelefono"
-            android:layout_marginTop="16dp"/>
+            <EditText
+                android:id="@+id/editTextDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Dirección" />
 
-        <EditText
-            android:id="@+id/editTextCedula"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Cédula"
-            android:inputType="number"
-            android:layout_below="@id/editTextCiudad"
-            android:layout_marginTop="16dp"/>
+            <EditText
+                android:id="@+id/editTextTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Teléfono"
+                android:inputType="phone" />
 
-        <!-- Botón Hacer Pedido -->
-        <Button
-            android:id="@+id/btnHacerPedido"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hacer Pedido"
-            android:layout_below="@id/editTextCedula"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="24dp"/>
+            <EditText
+                android:id="@+id/editTextCiudad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Ciudad" />
 
-    </RelativeLayout>
+            <EditText
+                android:id="@+id/editTextCedula"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Cédula"
+                android:inputType="number" />
 
-</androidx.cardview.widget.CardView>
+            <!-- Botón "Hacer Pedido" -->
+            <Button
+                android:id="@+id/btnHacerPedido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hacer Pedido"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/dark_blue"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

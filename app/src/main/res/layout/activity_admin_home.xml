@@ -50,6 +50,14 @@
                 android:shadowDx="2"
                 android:shadowDy="2"
                 android:shadowRadius="4" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+            </androidx.cardview.widget.CardView>
 
             <!-- Logo Image -->
             <ImageView
