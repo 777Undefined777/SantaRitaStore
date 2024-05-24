@@ -92,7 +92,7 @@
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/rounded_edittext"
                 android:hint="Número de teléfono"
-                android:maxLength="9"
+                android:maxLength="10"
                 android:padding="10dp" />
 
             <!-- EditText para nombre completo -->

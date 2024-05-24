@@ -34,12 +34,13 @@
     <fragment
         android:id="@+id/card_activity"
         android:name="com.example.intento.card_activity"
-        android:label="fragment_card_activity"
+        android:label="Carrito"
+
         tools:layout="@layout/fragment_card_activity" />
     <fragment
         android:id="@+id/show_product"
         android:name="com.example.intento.show_product"
-        android:label="fragment_show_product"
+        android:label="Productos"
         tools:layout="@layout/fragment_show_product" >
         <action
             android:id="@+id/action_show_product_to_card_activity"
@@ -48,7 +49,7 @@
     <fragment
         android:id="@+id/settingsActivity"
         android:name="com.example.intento.SettingsActivity"
-        android:label="fragment_settings_activity"
+        android:label="Editar Perfil Del Usuario"
         tools:layout="@layout/activity_settings" >
         <action
             android:id="@+id/action_settingsActivity_to_card_activity"
@@ -57,7 +58,7 @@
     <fragment
         android:id="@+id/sessionUserClose"
         android:name="com.example.intento.SessionUserClose"
-        android:label="fragment_session_user_close"
+        android:label="Cerrar Session"
         tools:layout="@layout/fragment_session_user_close" >
         <action
             android:id="@+id/action_sessionUserClose_to_settingsActivity"
@@ -66,6 +67,6 @@
     <fragment
         android:id="@+id/shipment"
         android:name="com.example.intento.Shipment"
-        android:label="fragment_shipment"
+        android:label="Seguimiento"
         tools:layout="@layout/fragment_shipment" />
 </navigation>
