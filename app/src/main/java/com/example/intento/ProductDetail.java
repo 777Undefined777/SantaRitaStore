@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Base64;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Objects;
 
 public class ProductDetail extends AppCompatActivity {
@@ -75,44 +77,38 @@ public class ProductDetail extends AppCompatActivity {
             }
         });
     }
-
     private void addToCart() {
-        // Obtener la cantidad ingresada por el usuario
         String quantityString = quantityEditText.getText().toString();
         int quantity = Integer.parseInt(quantityString);
 
-        // Obtener el precio del producto
         String priceString = productPriceTextView.getText().toString();
         double price = Double.parseDouble(priceString.replaceAll("[^\\d.]", ""));
 
-        // Obtener user_id del usuario que inició sesión
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        int userId = preferences.getInt("usuario_id", -1); // Devuelve -1 si no hay user_id
+        int userId = preferences.getInt("usuario_id", -1);
 
-        // Verifica si se obtuvo un user_id válido
         if (userId == -1) {
             Toast.makeText(this, "Error al obtener el user_id", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Abrir la base de datos para escritura
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Bitmap bitmap = ((BitmapDrawable) productImageView.getDrawable()).getBitmap();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+        byte[] imageBytes = outputStream.toByteArray();
 
-        // Crear un objeto ContentValues para guardar los datos en la base de datos
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("pid", 0); // Ajustar según tu lógica de producto
         values.put("pname", productNameTextView.getText().toString());
         values.put("price", String.valueOf(price));
         values.put("quantity", String.valueOf(quantity));
-        values.put("user_id", userId); // Incluir el user_id del usuario que inició sesión
+        values.put("user_id", userId);
+        values.put("image", imageBytes);
 
-        // Insertar el nuevo registro en la tabla de tarjetas
         long newRowId = db.insert("cards", null, values);
-
-        // Cerrar la base de datos
         db.close();
 
-        // Mostrar mensaje con Toast dependiendo del resultado
         if (newRowId != -1) {
             Intent intent = new Intent(ProductDetail.this, CheckSplashActivity.class);
             startActivity(intent);
@@ -121,4 +117,6 @@ public class ProductDetail extends AppCompatActivity {
             Toast.makeText(this, "Error al ingresar producto al carrito", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 }

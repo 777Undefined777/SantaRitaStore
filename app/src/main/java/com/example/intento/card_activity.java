@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,6 +110,7 @@ public class card_activity extends Fragment {
                 String pname = cursor.getString(cursor.getColumnIndexOrThrow("pname"));
                 String priceStr = cursor.getString(cursor.getColumnIndexOrThrow("price"));
                 String quantityStr = cursor.getString(cursor.getColumnIndexOrThrow("quantity"));
+                byte[] image = cursor.getBlob(cursor.getColumnIndexOrThrow("image"));
 
                 // Convertir valores de precio y cantidad a números
                 double price = Double.parseDouble(priceStr);
@@ -117,7 +121,7 @@ public class card_activity extends Fragment {
                 totalPrice += totalForOne;
 
                 // Crear un objeto Card con los datos
-                Card card = new Card(pid, pname, priceStr, "", quantityStr);
+                Card card = new Card(pid, pname, priceStr, "", quantityStr, image);
                 cardList.add(card);
 
             } while (cursor.moveToNext());

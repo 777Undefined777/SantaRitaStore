@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".card_activity">
 
     <!-- Fondo de pantalla -->
@@ -11,9 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/def"
-        />
-
+        android:src="@drawable/def" />
 
     <!-- CardView containing the Toolbar and other elements -->
     <androidx.cardview.widget.CardView
@@ -26,12 +24,12 @@
         app:cardBackgroundColor="#CCFFFFFF">
 
         <LinearLayout
-            android:id="@+id/Rlayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:backgroundTint="#CCFFFFFF">
 
+            <!-- Toolbar -->
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -42,7 +40,6 @@
                     android:layout_height="18dp"
                     android:layout_marginLeft="15dp"
                     android:src="@drawable/ic_cross" />
-
             </androidx.appcompat.widget.Toolbar>
 
             <!-- Icono de carrito -->
@@ -58,7 +55,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="12dp"
                     android:layout_marginBottom="2dp"
-                    android:src="@drawable/nav_cart"/>
+                    android:src="@drawable/nav_cart" />
             </LinearLayout>
 
             <!-- Monto a pagar -->
@@ -82,8 +79,7 @@
                     android:layout_width="30dp"
                     android:layout_height="28dp"
                     android:src="@drawable/pesos"
-                    android:layout_marginTop="10dp"/>
-
+                    android:layout_marginTop="10dp" />
                 <TextView
                     android:id="@+id/total"
                     android:layout_width="wrap_content"
@@ -98,7 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.7dp"
                 android:background="#b1b1b1"
-                android:layout_marginTop="30dp"/>
+                android:layout_marginTop="30dp" />
 
             <!-- Encabezado de la lista de productos -->
             <LinearLayout
@@ -107,38 +103,7 @@
                 android:orientation="horizontal"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginTop="15dp">
-
-                <TextView
-                    android:layout_width="2dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Producto"
-                    android:textColor="@color/black"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Precio"
-                    android:textColor="@color/black"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Cantidad"
-                    android:textColor="@color/black"
-                    android:textSize="12dp"
-                    android:textStyle="bold"/>
-            </LinearLayout>
+                android:layout_marginTop="15dp" />
 
             <!-- Separador -->
             <View
@@ -147,31 +112,25 @@
                 android:background="#b1b1b1"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="5dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-
-
-
-
     <!-- RecyclerView para mostrar los productos -->
-
-    <!-- Botón siguiente -->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/card_list"
         android:layout_width="match_parent"
-        android:layout_height="182dp"
-        android:layout_below="@+id/cardView"
-        android:layout_marginTop="3dp"
-        android:background="#CCFFFFFF" />
+        android:layout_height="0dp"
+        android:layout_below="@id/cardView"
+        android:layout_above="@id/l4"
+        android:layout_marginTop="10dp" />
 
+    <!-- Botón siguiente -->
     <RelativeLayout
         android:id="@+id/l4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/card_list"
+        android:layout_alignParentBottom="true"
         android:layout_margin="10dp">
 
         <Button
@@ -184,7 +143,6 @@
             android:textSize="18sp"
             android:backgroundTint="@color/dark_blue"
             android:textColor="@color/white" />
-
     </RelativeLayout>
 
     <!-- Mensaje de confirmación -->
@@ -198,5 +156,5 @@
         android:layout_centerVertical="true"
         android:text="Félicitation, Votre commande est entrain d'etre traité"
         android:textSize="20dp"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 </RelativeLayout>

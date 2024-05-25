@@ -1,20 +1,23 @@
 package com.example.intento.model;
 
 public class Card {
+    private String pid;
+    private String pname;
+    private String price;
+    private String discount;
+    private String quantity;
+    private byte[] image; // Añadir el campo de la imagen
 
-    private String pid,pname,price,discount,quantity;
-
-    public Card(){
-
-    }
-
-    public Card(String pid, String pname, String price, String discount, String quantity) {
+    public Card(String pid, String pname, String price, String discount, String quantity, byte[] image) {
         this.pid = pid;
         this.pname = pname;
         this.price = price;
         this.discount = discount;
         this.quantity = quantity;
+        this.image = image; // Inicializar el campo de la imagen
     }
+
+    // Getters y Setters para todos los campos
 
     public String getPid() {
         return pid;
@@ -54,5 +57,13 @@ public class Card {
 
     public void setQuantity(String quantity) {
         this.quantity = quantity;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

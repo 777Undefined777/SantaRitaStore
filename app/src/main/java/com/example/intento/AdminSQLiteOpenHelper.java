@@ -14,7 +14,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     // Nombre de la base de datos
     private static final String DATABASE_NAME = "santa_rita_shop_db";
     // Nueva versión de la base de datos
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 7;
 
     public AdminSQLiteOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -85,6 +85,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                 + "price TEXT,"
                 + "discount TEXT,"
                 + "quantity TEXT,"
+                + "image BLOB,"
                 + "command_id INTEGER,"
                 + "product_id INTEGER,"
                 + "user_id INTEGER,"
@@ -103,6 +104,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS products");
         db.execSQL("DROP TABLE IF EXISTS cards");
         db.execSQL("DROP TABLE IF EXISTS command_detail");
+
         // Crear la estructura de la base de datos nuevamente
         onCreate(db);
     }
