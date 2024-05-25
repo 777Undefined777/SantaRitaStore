@@ -124,7 +124,9 @@ public class AddNewProductActivity extends AppCompatActivity {
 
         loadingBar.dismiss();
 
-        Toast.makeText(this, "Producto agregado exitosamente", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(AddNewProductActivity.this, CheckSplashActivity.class);
+        startActivity(intent);
+        finish();
         finish(); // Regresar a la actividad anterior después de agregar el producto
     }
 }

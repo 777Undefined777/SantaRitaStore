@@ -114,7 +114,8 @@ public class ProductDetail extends AppCompatActivity {
 
         // Mostrar mensaje con Toast dependiendo del resultado
         if (newRowId != -1) {
-            Toast.makeText(this, "Producto agregado al carrito exitosamente", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(ProductDetail.this, CheckSplashActivity.class);
+            startActivity(intent);
             finish();
         } else {
             Toast.makeText(this, "Error al ingresar producto al carrito", Toast.LENGTH_SHORT).show();

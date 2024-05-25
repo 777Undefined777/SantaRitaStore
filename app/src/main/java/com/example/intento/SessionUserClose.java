@@ -43,6 +43,7 @@ public class SessionUserClose extends Fragment {
 
 
 
+
             }
         });
 

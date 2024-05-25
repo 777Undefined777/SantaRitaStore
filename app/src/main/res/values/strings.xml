@@ -7,6 +7,9 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Cerrar sesion</string>
+    <string name="exit_confirmation">¿Estás seguro de salir?</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>

@@ -98,9 +98,9 @@ public class CommandAdminCheck extends AppCompatActivity {
                 }
             }
 
-            Toast.makeText(this, "Pedido realizado correctamente", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(CommandAdminCheck.this, HomeActivity.class);
+            Intent intent = new Intent(CommandAdminCheck.this, CheckSplashActivity.class);
             startActivity(intent);
+            finish();
         } else {
             Toast.makeText(this, "Error al realizar el pedido", Toast.LENGTH_SHORT).show();
         }

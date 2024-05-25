@@ -58,8 +58,8 @@ public class LoginActivity extends AppCompatActivity {
         // Verificar si las credenciales son del administrador
         if (name.equals("andres") && phone.equals("3228847727") && password.equals("jorge")) {
             // Si las credenciales son para el administrador, inicia sesión y redirige a AdminHomeActivity
-            Toast.makeText(this, "Inicio de sesión exitoso como administrador", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
+
+            Intent intent = new Intent(LoginActivity.this, LoadingActivity2.class);
             startActivity(intent);
             finish();
         } else {
@@ -68,12 +68,12 @@ public class LoginActivity extends AppCompatActivity {
 
             if (userId != null) {
                 // Si las credenciales son válidas, redirige al usuario a HomeActivity
-                Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+
 
                 // Guardar el nombre de usuario y user_id en SharedPreferences
                 saveUsernameAndUserIdToSharedPreferences(name, userId);
 
-                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
                 startActivity(intent);
                 finish();
             } else {
