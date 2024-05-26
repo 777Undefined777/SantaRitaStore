@@ -28,7 +28,7 @@ public class LoadingActivity2 extends AppCompatActivity {
             @Override
             public void run() {
                 // Inicia la siguiente actividad después de la carga
-                Intent nextActivityIntent = new Intent(LoadingActivity2.this, HomeActivity.class);
+                Intent nextActivityIntent = new Intent(LoadingActivity2.this, AdminHomeActivity.class);
                 LoadingActivity2.this.startActivity(nextActivityIntent);
                 LoadingActivity2.this.finish();
             }

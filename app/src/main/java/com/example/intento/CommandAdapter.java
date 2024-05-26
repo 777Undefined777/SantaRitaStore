@@ -1,11 +1,15 @@
 package com.example.intento;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,13 +48,20 @@ public class CommandAdapter extends RecyclerView.Adapter<CommandAdapter.CommandV
         @SuppressLint("Range") String date = mCursor.getString(mCursor.getColumnIndex("date"));
         @SuppressLint("Range") String address = mCursor.getString(mCursor.getColumnIndex("address"));
 
-        holder.textViewId.setText(String.valueOf(id));
-        holder.textViewName.setText("Nombre: "+name);
-        holder.textViewLastname.setText("Apellido: "+lastname);
-        holder.textViewPhone.setText("Telefono: "+phone);
-        holder.textViewCity.setText("Ciudad/Pueblo: "+city);
-        holder.textViewDate.setText("Fecha de pedido: "+date);
-        holder.textViewAddress.setText("Direccion: "+address);
+        holder.textViewId.setText("Pedido Numero  :"+String.valueOf(id));
+        holder.textViewName.setText("Nombre: " + name);
+        holder.textViewLastname.setText("Apellido: " + lastname);
+        holder.textViewPhone.setText("Teléfono: " + phone);
+        holder.textViewCity.setText("Ciudad/Pueblo: " + city);
+        holder.textViewDate.setText("Fecha de pedido: " + date);
+        holder.textViewAddress.setText("Dirección: " + address);
+
+        // Iniciar animación de rotación
+        ObjectAnimator rotateAnimation = ObjectAnimator.ofFloat(holder.flowerImage, "rotationY", 0f, 360f);
+        rotateAnimation.setDuration(3000); // Duración de la animación
+        rotateAnimation.setInterpolator(new LinearInterpolator());
+        rotateAnimation.setRepeatCount(ObjectAnimator.INFINITE); // Repetir la animación infinitamente
+        rotateAnimation.start();
 
         // Filtrar la lista de detalles de productos para obtener solo los detalles del producto del pedido actual
         List<CommandDetail> filteredDetails = new ArrayList<>();
@@ -62,13 +73,12 @@ public class CommandAdapter extends RecyclerView.Adapter<CommandAdapter.CommandV
 
         // Mostrar los detalles del producto
         for (CommandDetail detail : filteredDetails) {
-            holder.textViewProductName.append("Nombre producto: "+detail.getProductName() + "\n");
-            holder.textViewProductPrice.append("Precio Unitario: "+detail.getPrice() + "\n");
-            holder.textViewProductQuantity.append("Cantidad: "+detail.getQuantity() + "\n");
-            holder.textViewProductTotalPrice.append("Precio X Cantidad: "+detail.getTotalPrice() + "\n");
+            holder.textViewProductName.append("Nombre producto: " + detail.getProductName() + "\n");
+            holder.textViewProductPrice.append("Precio Unitario: " + detail.getPrice() + "\n");
+            holder.textViewProductQuantity.append("Cantidad: " + detail.getQuantity() + "\n");
+            holder.textViewProductTotalPrice.append("Precio X Cantidad: " + detail.getTotalPrice() + "\n");
         }
     }
-
 
     @Override
     public int getItemCount() {
@@ -79,6 +89,7 @@ public class CommandAdapter extends RecyclerView.Adapter<CommandAdapter.CommandV
 
         public TextView textViewId, textViewName, textViewLastname, textViewCity, textViewDate, textViewAddress, textViewPhone;
         public TextView textViewProductName, textViewProductPrice, textViewProductQuantity, textViewProductTotalPrice;
+        public ImageView flowerImage;
 
         public CommandViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -89,11 +100,11 @@ public class CommandAdapter extends RecyclerView.Adapter<CommandAdapter.CommandV
             textViewCity = itemView.findViewById(R.id.textViewCity);
             textViewDate = itemView.findViewById(R.id.textViewDate);
             textViewAddress = itemView.findViewById(R.id.textViewAddress);
-
             textViewProductName = itemView.findViewById(R.id.textViewProductName);
             textViewProductPrice = itemView.findViewById(R.id.textViewProductPrice);
             textViewProductQuantity = itemView.findViewById(R.id.textViewProductQuantity);
             textViewProductTotalPrice = itemView.findViewById(R.id.textViewProductTotalPrice);
+            flowerImage = itemView.findViewById(R.id.flowerImage); // Asegúrate de que tu ImageView tenga este ID en tu layout
         }
     }
 }

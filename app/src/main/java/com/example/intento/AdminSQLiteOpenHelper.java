@@ -131,6 +131,11 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         // Ejecuta la consulta y devuelve el cursor con los resultados
         return db.rawQuery(query, null);
     }
+    public Cursor getUserCommands(SQLiteDatabase db, long userId) {
+        String query = "SELECT id, name, lastname, phone, city, date, address FROM commands WHERE user_id = ?";
+        return db.rawQuery(query, new String[]{String.valueOf(userId)});
+    }
+
 
     public Cursor getAllCommands(SQLiteDatabase db) {
         String query = "SELECT id, name, lastname, phone, city, date, address FROM commands";

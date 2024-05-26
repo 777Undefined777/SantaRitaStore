@@ -44,6 +44,7 @@
                 android:text="Iniciar Sesion"
                 android:textSize="24sp"
                 android:gravity="center"
+                android:textColor="@color/black"
                 />
 
             <!-- CardView for the Image -->
