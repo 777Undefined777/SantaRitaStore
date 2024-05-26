@@ -65,6 +65,7 @@
 
             <!-- ImageView "iconocannabis" -->
             <ImageView
+                android:id="@+id/flowerImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -73,7 +74,8 @@
                 android:adjustViewBounds="true"
                 android:maxWidth="148dp"
                 android:maxHeight="27dp"
-                android:scaleType="fitCenter" />
+                android:scaleType="fitCenter"
+                android:contentDescription="@string/flower_description" />
 
             <!-- EditText "login_name_input" -->
             <EditText

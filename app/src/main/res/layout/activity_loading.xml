@@ -3,24 +3,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Fondo de pantalla -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/def" />
 
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminate="true" />
+    <!-- Layout relativo para posicionar elementos -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="50dp"
-        android:text="Cargando..."
-        android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        <!-- Imagen de la flor giratoria en la parte superior -->
+        <ImageView
+            android:id="@+id/flowerImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/iconocannabis"
+            android:contentDescription="@string/flower_description" />
+
+        <!-- Barra de progreso centrada -->
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminate="true" />
+
+        <!-- Texto de carga centrado horizontalmente y en la parte inferior -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:text="Cargando..."
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
 </FrameLayout>

@@ -3,6 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/translucent_white">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/def" />
 
     <ImageView
         android:layout_width="100dp"
@@ -14,8 +19,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="50dp"
-        android:text="Agregado exitosamente"
-        android:textColor="@android:color/black"
+        android:layout_marginBottom="20dp"
+        android:text="Proceso Exitoso"
+        android:textColor="@color/white_translucent"
         android:textSize="30sp" />
 </FrameLayout>

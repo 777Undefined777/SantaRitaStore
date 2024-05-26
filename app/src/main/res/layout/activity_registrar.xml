@@ -44,7 +44,8 @@
                 android:fontFamily="sans-serif-black"
                 android:text="Registrar Usuario"
                 android:textSize="24sp"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textColor="@color/black"/>
 
             <!-- CardView for the Image -->
             <androidx.cardview.widget.CardView
@@ -64,6 +65,7 @@
             </androidx.cardview.widget.CardView>
 
             <ImageView
+                android:id="@+id/flowerImage2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -72,7 +74,8 @@
                 android:adjustViewBounds="true"
                 android:maxWidth="148dp"
                 android:maxHeight="27dp"
-                android:scaleType="fitCenter" />
+                android:scaleType="fitCenter"
+                android:contentDescription="@string/flower_description" />
 
             <EditText
                 android:id="@+id/register_username_input"

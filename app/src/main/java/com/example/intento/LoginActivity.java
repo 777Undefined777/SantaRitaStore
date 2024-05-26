@@ -1,5 +1,6 @@
 package com.example.intento;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -8,8 +9,10 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +26,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ImageView flowerImage = findViewById(R.id.flowerImage);
+        ObjectAnimator rotateAnimation = ObjectAnimator.ofFloat(flowerImage, "rotationY", 0f, 360f);
+        rotateAnimation.setDuration(3000); // Duración de la animación
+        rotateAnimation.setInterpolator(new LinearInterpolator());
+        rotateAnimation.setRepeatCount(ObjectAnimator.INFINITE); // Repetir la animación infinitamente
+        rotateAnimation.start();
 
         // Inicializar AdminSQLiteOpenHelper
         dbHelper = new AdminSQLiteOpenHelper(this);

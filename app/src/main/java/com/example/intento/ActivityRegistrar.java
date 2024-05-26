@@ -1,16 +1,19 @@
 package com.example.intento;
 
-import android.app.ProgressDialog;
+import android.animation.ObjectAnimator;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -20,13 +23,20 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ActivityRegistrar extends AppCompatActivity {
 
     private EditText inputName, inputPhone, inputPassword;
-    private ProgressDialog loadingBar;
+
     private AdminSQLiteOpenHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
+
+        ImageView flowerImage = findViewById(R.id.flowerImage2);
+        ObjectAnimator rotateAnimation = ObjectAnimator.ofFloat(flowerImage, "rotationY", 0f, 360f);
+        rotateAnimation.setDuration(3000); // Duración de la animación
+        rotateAnimation.setInterpolator(new LinearInterpolator());
+        rotateAnimation.setRepeatCount(ObjectAnimator.INFINITE); // Repetir la animación infinitamente
+        rotateAnimation.start();
 
         // Inicializar AdminSQLiteOpenHelper
         dbHelper = new AdminSQLiteOpenHelper(this);
@@ -35,7 +45,7 @@ public class ActivityRegistrar extends AppCompatActivity {
         inputName = findViewById(R.id.register_username_input);
         inputPhone = findViewById(R.id.register_phone_number_input);
         inputPassword = findViewById(R.id.register_password_input);
-        loadingBar = new ProgressDialog(this);
+
 
         // Configurar el botón de crear cuenta
         Button btnCreateAccount = findViewById(R.id.btn_register);
@@ -65,10 +75,7 @@ public class ActivityRegistrar extends AppCompatActivity {
 
     private void registerUser(String name, String phone, String password) {
         // Mostrar un diálogo de progreso durante el registro
-        loadingBar.setTitle("Creando su usuario");
-        loadingBar.setMessage("Por favor, espere un momento...");
-        loadingBar.setCanceledOnTouchOutside(false);
-        loadingBar.show();
+
 
         // Obtener una instancia de la base de datos
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -93,7 +100,7 @@ public class ActivityRegistrar extends AppCompatActivity {
             long newRowId = db.insert("users", null, values);
 
             // Cerrar el diálogo de progreso
-            loadingBar.dismiss();
+
 
             // Comprobar si la inserción fue exitosa
             if (newRowId != -1) {
@@ -112,11 +119,9 @@ public class ActivityRegistrar extends AppCompatActivity {
                 Toast.makeText(this, "Error al registrar el usuario", Toast.LENGTH_SHORT).show();
             }
 
-            // Limpiar los campos de entrada después del registro
-
         } else {
             // Si no se seleccionó ningún género
-            loadingBar.dismiss();
+
             Toast.makeText(this, "Por favor, seleccione su género", Toast.LENGTH_SHORT).show();
         }
 
