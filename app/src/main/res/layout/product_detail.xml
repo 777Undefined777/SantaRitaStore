@@ -24,6 +24,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -41,6 +43,19 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp">
 
+                <ImageView
+                    android:id="@+id/close_settings_btn"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@android:drawable/ic_menu_close_clear_cancel"
+                    android:contentDescription="Close Button"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp" />
+
                 <!-- Product title layout -->
                 <LinearLayout
                     android:id="@+id/product_page_title_layout"
@@ -52,29 +67,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <Toolbar
-                        android:id="@+id/tl"
+                    <TextView
+                        android:id="@+id/textView2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/textView2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:fontFamily="sans-serif-black"
-                            android:text="Detalle de Producto"
-                            android:textSize="24sp"
-                            android:gravity="center"
-                            />
-
-                        <ImageView
-                            android:id="@+id/rr"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_marginLeft="15dp"
-                            android:src="@drawable/ic_cross" />
-
-                    </Toolbar>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="sans-serif-black"
+                        android:text="Detalle de Producto"
+                        android:textSize="24sp"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        />
 
                     <View
                         android:layout_width="match_parent"

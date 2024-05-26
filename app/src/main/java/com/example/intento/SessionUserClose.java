@@ -32,14 +32,17 @@ public class SessionUserClose extends Fragment {
             @Override
             public void onClick(View v) {
                 // Navega a LoginActivity
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 
         noButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                getParentFragmentManager().popBackStack();
 
 
 

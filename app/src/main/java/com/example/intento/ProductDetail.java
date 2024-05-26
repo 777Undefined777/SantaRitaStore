@@ -27,10 +27,12 @@ public class ProductDetail extends AppCompatActivity {
     private ImageView productImageView;
     private TextView productNameTextView;
     private TextView productDescriptionTextView;
+    private ImageView closeSettingsBtn;
     private TextView productPriceTextView;
     private EditText quantityEditText;
     private Button addToCartButton;
     private AdminSQLiteOpenHelper dbHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class ProductDetail extends AppCompatActivity {
         productPriceTextView = findViewById(R.id.product_price_details);
         quantityEditText = findViewById(R.id.quantity_edit_text);
         addToCartButton = findViewById(R.id.product_add_to_card_btn);
+        closeSettingsBtn = findViewById(R.id.close_settings_btn);
 
         // Obtener los datos del producto seleccionado
         String productName = Objects.requireNonNull(getIntent().getStringExtra("productName"));
@@ -76,7 +79,16 @@ public class ProductDetail extends AppCompatActivity {
                 addToCart();
             }
         });
+
+        // Agregar OnClickListener al botón "Cerrar configuraciones"
+        closeSettingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Finaliza la actividad al hacer clic en el botón de cierre
+            }
+        });
     }
+
     private void addToCart() {
         String quantityString = quantityEditText.getText().toString();
         int quantity = Integer.parseInt(quantityString);

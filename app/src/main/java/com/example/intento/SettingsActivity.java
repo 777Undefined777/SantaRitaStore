@@ -66,6 +66,7 @@ public class SettingsActivity extends Fragment {
             @Override
             public void onClick(View v) {
                 // Lógica para cerrar el fragmento (o regresar a la actividad anterior)
+
                 getActivity().onBackPressed();
             }
         });
