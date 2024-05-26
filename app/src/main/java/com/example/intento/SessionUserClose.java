@@ -32,7 +32,7 @@ public class SessionUserClose extends Fragment {
             @Override
             public void onClick(View v) {
                 // Navega a LoginActivity
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
         });

@@ -104,7 +104,7 @@ public class ActivityRegistrar extends AppCompatActivity {
                 saveUsernameAndUserIdToSharedPreferences(name, (int) newRowId);
 
                 // Redirigir a la actividad de inicio de sesión
-                Intent intent = new Intent(ActivityRegistrar.this, LoginActivity.class);
+                Intent intent = new Intent(ActivityRegistrar.this, MainActivity.class);
                 startActivity(intent);
                 finish(); // Finalizar esta actividad
             } else {
