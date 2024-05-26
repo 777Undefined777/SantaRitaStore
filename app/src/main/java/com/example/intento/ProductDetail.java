@@ -20,6 +20,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.ByteArrayOutputStream;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Objects;
 
 public class ProductDetail extends AppCompatActivity {
@@ -32,7 +34,6 @@ public class ProductDetail extends AppCompatActivity {
     private EditText quantityEditText;
     private Button addToCartButton;
     private AdminSQLiteOpenHelper dbHelper;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +56,15 @@ public class ProductDetail extends AppCompatActivity {
         String productDescription = Objects.requireNonNull(getIntent().getStringExtra("productDescription"));
         String productPrice = Objects.requireNonNull(getIntent().getStringExtra("productPrice"));
 
+        // Formatear el precio con puntos
+        double price = Double.parseDouble(productPrice);
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(new Locale("es", "CO"));
+        String formattedPrice = numberFormat.format(price);
+
         // Establecer los datos del producto en los elementos de la interfaz de usuario
         productNameTextView.setText(productName);
         productDescriptionTextView.setText(productDescription);
-        productPriceTextView.setText("COP $" + productPrice);
+        productPriceTextView.setText("Precio : COP $" + formattedPrice);
 
         // Obtener la imagen como cadena Base64 de los extras del intent
         String imageBase64 = getIntent().getStringExtra("productImage");
@@ -93,8 +99,10 @@ public class ProductDetail extends AppCompatActivity {
         String quantityString = quantityEditText.getText().toString();
         int quantity = Integer.parseInt(quantityString);
 
+        // Obtener el precio del TextView y convertirlo a double
         String priceString = productPriceTextView.getText().toString();
-        double price = Double.parseDouble(priceString.replaceAll("[^\\d.]", ""));
+        priceString = priceString.replace("Precio : COP $", "").replace(".", "");
+        double price = Double.parseDouble(priceString);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         int userId = preferences.getInt("usuario_id", -1);
@@ -129,6 +137,4 @@ public class ProductDetail extends AppCompatActivity {
             Toast.makeText(this, "Error al ingresar producto al carrito", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 }

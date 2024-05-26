@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
-                android:text="Monto a pagar"
+                android:text="Monto Total a pagar"
                 android:textColor="#000"
                 android:textSize="13dp" />
 
@@ -79,14 +79,19 @@
                     android:layout_width="30dp"
                     android:layout_height="28dp"
                     android:src="@drawable/pesos"
-                    android:layout_marginTop="10dp" />
+                    android:layout_marginTop="10dp"
+
+                    android:textAlignment="center" />
                 <TextView
                     android:id="@+id/total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:text="35.000"
                     android:textColor="#000"
-                    android:textSize="35dp" />
+                    android:textSize="35dp"
+                    android:textAlignment="center"
+                    tools:ignore="RtlCompat" />
             </LinearLayout>
 
             <!-- Separador -->

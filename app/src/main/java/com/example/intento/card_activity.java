@@ -5,10 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +21,10 @@ import com.example.intento.model.Card;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class card_activity extends Fragment {
 
@@ -129,8 +128,12 @@ public class card_activity extends Fragment {
 
         cursor.close();
 
-        // Mostrar el total en el TextView
-        totalTextView.setText(String.format("%.2f", totalPrice));
+        // Formatear el precio total con puntos
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(new Locale("es", "CO"));
+        String formattedTotalPrice = numberFormat.format(totalPrice);
+
+        // Mostrar el total formateado en el TextView
+        totalTextView.setText(formattedTotalPrice);
 
         // Notificar al adaptador que los datos han cambiado
         cardAdapter.notifyDataSetChanged();

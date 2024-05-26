@@ -187,7 +187,7 @@
                             android:padding="20dp"
                             android:text="COP. 35000"
                             android:textColor="#000000"
-                            android:textSize="16dp"
+                            android:textSize="20dp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -199,45 +199,6 @@
                         android:layout_marginBottom="10dp"
                         android:background="#EBEBEB" />
 
-                    <LinearLayout
-                        android:id="@+id/product_page_price_rating_rating_layout"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="6dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:tag="open_review_page">
-
-                        <ProgressBar
-                            android:id="@+id/product_page_rating_progress_bar"
-                            style="?android:attr/progressBarStyleHorizontal"
-                            android:layout_width="75dp"
-                            android:layout_height="20dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="8dp"
-                            android:progress="80"
-                            android:tag="open_review_page" />
-
-                        <TextView
-                            android:id="@+id/product_description_details1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:paddingTop="4dp"
-                            android:text="5 personas lo vieron"
-                            android:textColor="#565656"
-                            android:textSize="11dp" />
-
-                        <TextView
-                            android:id="@+id/product_page_ratings_count_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:paddingTop="4dp"
-                            android:text="3 calificaciones"
-                            android:textColor="#565656"
-                            android:textSize="11dp" />
-                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
