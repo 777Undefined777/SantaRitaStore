@@ -1,0 +1,134 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!-- Background ImageView -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/def" />
+
+
+    <!-- CardView -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        android:backgroundTint="#CCFFFFFF"
+        android:layout_centerInParent="true">
+
+        <!-- LinearLayout con contenido -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textViewId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID"
+                android:textColor="@color/black"
+                android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@+id/flowerImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/iconocannabis"
+                android:adjustViewBounds="true"
+                android:maxWidth="148dp"
+                android:maxHeight="27dp"
+                android:scaleType="fitCenter"
+                android:contentDescription="@string/flower_description" />
+
+            <!-- Texto TextViews -->
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textViewLastname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apellido"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textViewPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Teléfono"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textViewCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ciudad"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textViewDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fecha"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textViewAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dirección"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textViewProductName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textViewProductPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textViewProductQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textViewProductTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/black" />
+
+            <!-- Agregar otros TextView según sea necesario -->
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

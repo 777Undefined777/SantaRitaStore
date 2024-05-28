@@ -48,6 +48,7 @@ dependencies {
     implementation ("com.google.android.material:material:1.5.0")
 
     implementation(libs.activity)
+    implementation(libs.recyclerview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

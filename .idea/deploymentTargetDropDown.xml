@@ -8,6 +8,9 @@
       <entry key="DeleteProducts">
         <State />
       </entry>
+      <entry key="UserOrdersActivity">
+        <State />
+      </entry>
       <entry key="app">
         <State>
           <targetSelectedWithDropDown>
